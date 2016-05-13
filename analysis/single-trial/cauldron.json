@@ -1,0 +1,16 @@
+{
+  "python_paths": [
+    "../../"
+  ],
+  "results_path": "../results",
+  "steps_folder": "steps",
+  "steps":[
+    "load_settings.py",
+    "introduction.md",
+    "load_data.py",
+    "airplane.html",
+    "plot_seating.py",
+    "plot_waiting.py",
+    "aisle_capacity.py"
+  ]
+}
