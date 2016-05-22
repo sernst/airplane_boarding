@@ -1,0 +1,35 @@
+{
+  "title": "Ideal Backward",
+  "summary": [
+    "This is a trial for a Boeing 737-800 (73H).",
+    "Passengers are loaded from the back of the plane to the front, in perfect",
+    "order, with no groups and and has no boarding delays."
+  ],
+  "airplane": [
+    {
+      "class": "First",
+      "rows": 4,
+      "seats": [
+        2,
+        2
+      ]
+    },
+    {
+      "class": "Second",
+      "rows": 23,
+      "seats": [
+        3,
+        3
+      ]
+    }
+  ],
+  "populate": {
+    "type": "BACKWARD",
+    "groups": 1
+  },
+  "delay": {
+    "seating": 0,
+    "interchange": 0
+  }
+}
+

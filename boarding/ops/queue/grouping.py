@@ -44,7 +44,7 @@ def chunks(
 
 def order_by(
         groups: typing.List,
-        order_type: str,
+        order_type: typing.Union[str, list, tuple],
         default_type: str = None
 ) -> typing.List:
     """
@@ -64,6 +64,10 @@ def order_by(
     """
 
     order_type = order_type.upper()
+
+    if isinstance(order_type, (list, tuple)):
+        ordering = [order_type.index(x + 1) for x in range(len(groups))]
+        return [x for (y, x) in sorted(zip(ordering, groups))]
 
     if order_type == 'BACKWARD':
         groups.reverse()

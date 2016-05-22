@@ -81,57 +81,40 @@ def create_class_section(section: dict, row_offset: int = 0) -> pd.DataFrame:
             seat_arrangement - math.ceil(0.5 * seat_arrangement)
         ]
     seats_per_row = sum(seat_arrangement)
-
     passenger_count = seats_per_row * row_count
-
-    row = []
-    side = []
-    column = []
-    aisle_distance = []
-    letter = []
-    moved = []
-    delay = []
-    seated = []
-    interchanged = []
-    delay_interchange = []
-    count_interchange = []
-    count_stuck = []
+    passengers = []
 
     for index in range(passenger_count):
-        row.append(row_offset + math.floor(index / seats_per_row))
-        column.append(index % seats_per_row)
-        letter.append(string.ascii_uppercase[column[-1]])
+        aisle = row_offset + math.floor(index / seats_per_row)
+        column = index % seats_per_row
+        letter = string.ascii_uppercase[column]
 
-        if column[-1] < seat_arrangement[0]:
-            side.append('L')
-            aisle_distance.append(seat_arrangement[0] - 1 - column[-1])
+        if column < seat_arrangement[0]:
+            side = 'L'
+            aisle_distance = seat_arrangement[0] - 1 - column
+            window_distance = column
         else:
-            side.append('R')
-            aisle_distance.append(column[-1] - seat_arrangement[0])
+            side = 'R'
+            aisle_distance = column - seat_arrangement[0]
+            window_distance = seats_per_row - 1 - column
 
-        moved.append(False)
-        seated.append(False)
-        delay.append(0)
-        delay_interchange.append(0)
-        count_stuck.append(0)
-        count_interchange.append(0)
-        interchanged.append(False)
+        passengers.append(dict(
+            aisle=aisle,
+            column=column,
+            side=side,
+            letter=letter,
+            aisle_distance=aisle_distance,
+            window_distance=window_distance,
+            moved=False,
+            interchanged=False,
+            seated=False,
+            delay=0,
+            delay_interchange=0,
+            count_stuck=0,
+            count_interchange=0
+        ))
 
-    return pd.DataFrame({
-        'aisle': row,
-        'side': side,
-        'column': column,
-        'aisle_distance': aisle_distance,
-        'letter': letter,
-
-        'moved': moved,
-        'seated': seated,
-        'delay': delay,
-        'interchanged': interchanged,
-        'delay_interchange': delay_interchange,
-        'count_interchange': count_interchange,
-        'count_stuck': count_stuck
-    })
+    return pd.DataFrame(passengers)
 
 
 def move(settings: dict, passengers: pd.DataFrame, queue: pd.DataFrame):

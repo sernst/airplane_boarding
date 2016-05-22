@@ -3,12 +3,13 @@ import logging
 
 import pandas as pd
 
+from boarding.ops import airplane
 from boarding.ops.queue import randomized
 from boarding.ops.queue import backward
 from boarding.ops.queue import forward
 
 
-def create(settings: dict, passengers: pd.DataFrame) -> pd.DataFrame:
+def create(settings: dict, passengers: pd.DataFrame = None) -> pd.DataFrame:
     """
     Creates the queue data frame for the trial based on the specified settings
     and the passenger data and returns that as a data frame.
@@ -19,23 +20,23 @@ def create(settings: dict, passengers: pd.DataFrame) -> pd.DataFrame:
         The passengers data frame for the trial
     """
 
-    aisle_count = passengers.iloc[-1]['aisle'] + 1
-    passenger_count = passengers.shape[0]
+    aisle_count = airplane.aisle_count(settings)
 
-    aisle = []
-    passenger = []
-    seated = []
+    if passengers is None:
+        passenger_count = airplane.seat_count(settings)
+    else:
+        passenger_count = passengers.shape[0]
+
+    positions = []
 
     for index in range(-passenger_count, aisle_count):
-        aisle.append(index)
-        passenger.append(None)
-        seated.append(0)
+        positions.append(dict(
+            aisle=index,
+            passenger=None,
+            seated=0
+        ))
 
-    return pd.DataFrame({
-        'aisle': aisle,
-        'passenger': passenger,
-        'seated': seated
-    })
+    return pd.DataFrame(positions)
 
 
 def size(settings: dict, queue: pd.DataFrame) -> int:
@@ -66,8 +67,11 @@ def get_population_settings(settings: dict) -> dict:
             'type': 'RANDOM'
         }
 
-    if isinstance(settings['populate'], str):
-        settings['populate'] = {'type': settings['populate']}
+    ps = settings['populate']
+
+    if isinstance(ps, str):
+        ps = {'type': ps}
+        settings['populate'] = ps
 
     defaults = dict(
         type='RANDOM',
@@ -76,12 +80,12 @@ def get_population_settings(settings: dict) -> dict:
     )
 
     for key, value in defaults.items():
-        if key not in settings['populate']:
-            settings['populate'][key] = value
+        if key not in ps:
+            ps[key] = value
 
     try:
-        settings['populate']['type'].upper()
-        return settings['populate']
+        ps['type'].upper()
+        return ps
     except Exception:
         logging.getLogger('boarding').exception(
             'Invalid or missing "populate" value in trial configs'
@@ -116,6 +120,8 @@ def populate(
         populate_function = backward.populate
     elif populate_type == 'FORWARD':
         populate_function = forward.populate
+    elif populate_type == 'CUSTOM':
+        populate_function = custom.populate
 
     if populate_function is None:
         logging.getLogger('boarding').critical(

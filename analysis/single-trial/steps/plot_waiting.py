@@ -1,4 +1,5 @@
-import measurement_stats as mstats
+import math
+
 import numpy as np
 import plotly.graph_objs as go
 from cauldron import plotting
@@ -6,6 +7,8 @@ from cauldron import project
 
 progress = project.shared.progress
 settings = project.shared.settings
+passengers = project.shared.passengers
+status = project.shared.status
 
 passenger_count = project.shared.passengers.shape[0]
 
@@ -43,25 +46,16 @@ project.display.plotly(
     )
 )
 
-distribution = mstats.create_distribution(
-    measurements=waiting,
-    uncertainties=100.0 / passenger_count
-)
-x_values = mstats.distributions.uniform_range(distribution, 3, 2048)
-
-data = go.Scatter(
-    x=x_values,
-    y=distribution.probabilities_at(x_values),
-    mode='lines',
-    fill='tozeroy',
-    line={'color': 'green'}
-)
+stuck_times = passengers['count_stuck'] / 60.0
 
 project.display.plotly(
-    data=data,
+    data=go.Histogram(
+        x=stuck_times,
+        nbinsx=math.ceil(status['max_time'] / 60)
+    ),
     layout=plotting.create_layout(
-        title='Waiting KDE Distribution',
-        x_label='Passengers Waiting(%)',
-        y_label='Expectation Value (au)'
+        title='Passenger Wait Times',
+        x_label='Waiting Time (s)',
+        y_label='Frequency (#)'
     )
 )

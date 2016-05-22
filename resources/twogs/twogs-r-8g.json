@@ -1,0 +1,35 @@
+{
+  "title": "Randomized Groups",
+  "summary": [
+    "This is a trial for a Boeing 737-800 (73H).",
+    "Passengers are loaded in randomized groups of rows with delays."
+  ],
+  "airplane": [
+    {
+      "class": "First",
+      "rows": 4,
+      "seats": [
+        2,
+        2
+      ]
+    },
+    {
+      "class": "Second",
+      "rows": 23,
+      "seats": [
+        3,
+        3
+      ]
+    }
+  ],
+  "populate": {
+    "type": "RANDOM",
+    "groups": 6,
+    "shuffle": true
+  },
+  "delay": {
+    "seating": 2,
+    "interchange": 0
+  }
+}
+

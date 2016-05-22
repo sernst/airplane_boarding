@@ -1,0 +1,11 @@
+{
+  "python_paths": [
+    "../../"
+  ],
+  "results_path": "../results",
+  "steps_folder": "steps",
+  "steps": [
+    "load_data.py",
+    "groupings.py"
+  ]
+}

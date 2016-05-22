@@ -3,6 +3,8 @@
 
 {{ settings.summary }}
 
+ * __Trial ID__: {{ trial_id }}
+ * __Passengers__: {{ passengers.shape[0] }}
  * __Time__: {{ status.time }}
  * __Population__: {{ settings.populate.type }}
     * _Group Count_: {{ settings.populate.groups }}

@@ -1,6 +1,10 @@
 {
-  "title": "Airplane Boarding Trial",
-  "summary": "This is a trial for a Boeing 737-800 (73H)",
+  "title": "Interchange Delay Random",
+  "summary": [
+    "This is a trial for a Boeing 737-800 (73H).",
+    "Passengers are loaded in randomized",
+    "order, without groups but with an interchange delay."
+  ],
   "airplane": [
     {
       "class": "First",
@@ -18,7 +22,8 @@
     "groups": 1
   },
   "delay": {
-    "seating": 16,
-    "interchange": 8
+    "seating": 0,
+    "interchange": 5
   }
 }
+

@@ -1,0 +1,35 @@
+{
+  "title": "Interchange Delay Forward",
+  "summary": [
+    "This is a trial for a Boeing 737-800 (73H).",
+    "Passengers are loaded from the front of the plane to the back, in perfect",
+    "order, without groups but with an interchange delay."
+  ],
+  "airplane": [
+    {
+      "class": "First",
+      "rows": 4,
+      "seats": [
+        2,
+        2
+      ]
+    },
+    {
+      "class": "Second",
+      "rows": 23,
+      "seats": [
+        3,
+        3
+      ]
+    }
+  ],
+  "populate": {
+    "type": "FORWARD",
+    "groups": 1
+  },
+  "delay": {
+    "seating": 0,
+    "interchange": 1
+  }
+}
+

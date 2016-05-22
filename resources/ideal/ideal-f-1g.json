@@ -1,6 +1,10 @@
 {
-  "title": "Airplane Boarding Trial",
-  "summary": "This is a trial for a Boeing 737-800 (73H)",
+  "title": "Ideal Forward",
+  "summary": [
+    "This is a trial for a Boeing 737-800 (73H).",
+    "Passengers are loaded from the front of the plane to the back, in perfect",
+    "order, with no groups and and has no boarding delays."
+  ],
   "airplane": [
     {
       "class": "First",
@@ -24,7 +28,8 @@
     "groups": 1
   },
   "delay": {
-    "seating": 16,
-    "interchange": 8
+    "seating": 0,
+    "interchange": 0
   }
 }
+

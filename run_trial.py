@@ -2,14 +2,45 @@ from boarding import paths
 from boarding import results
 from boarding import simulate
 
-trials = [
-    'trial-b1-s16-i8',
-    'trial-f1-s16-i8',
-    'trial-r1-s16-i8'
-]
+# trials = [
+#     'i-five/i-five-b-1g',
+#     'i-five/i-five-f-1g',
+#     ('i-five/i-five-r-1g', '@1'),
+#     ('i-five/i-five-r-1g', '@2'),
+#     ('i-five/i-five-r-1g', '@3'),
+#     ('i-five/i-five-r-1g', '@4'),
+#     ('i-five/i-five-r-1g', '@5'),
+#     ('i-five/i-five-r-1g', '@6'),
+#     ('i-five/i-five-r-1g', '@7')
+# ]
 
-for t in trials:
-    settings_path = paths.package('resources', '{}.json'.format(t))
-    results_path = paths.package('results', t)
-    r = simulate.run(settings_path)
-    results.save(results_path, r)
+methods = ['r']  # ['b', 'f', 'r']
+groups = [1]  # 2,3,4,5,6,8,10]
+collections = ['is_two']
+# collections = [
+#     'one', 'two', 'five', 'ten',
+#     'i-one', 'i-two', 'i-five', 'i-ten'
+# ]
+
+trial_slug = '{collection}/{collection}-{method}-{group}g'
+start_index = 1
+end_index = 2
+
+for c in collections:
+    for g in groups:
+        for method in methods:
+            for index in range(start_index, end_index):
+                source_name = trial_slug.format(
+                    collection=c,
+                    method=method,
+                    group=g
+                )
+                trial_name = '{}-@{}'.format(source_name, index)
+
+                print('--- TRIAL: {} ---'.format(trial_name))
+                settings_path = paths.package(
+                    'resources', '{}.json'.format(source_name)
+                )
+                results_path = paths.package('results', trial_name)
+                r = simulate.run(settings_path)
+                results.save(results_path, r)

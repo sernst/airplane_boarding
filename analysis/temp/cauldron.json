@@ -1,0 +1,9 @@
+{
+  "python_paths": [
+    "../../"
+  ],
+  "results_path": "../results",
+  "steps":[
+    "plots.py"
+  ]
+}

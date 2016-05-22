@@ -24,6 +24,7 @@ def load(source: typing.Union[str, dict]) -> dict:
         try:
             with open(source, 'r') as f:
                 out = json.load(f)
+            out['source_path'] = source
         except Exception:
             logging.getLogger('boarding').exception(
                 'Missing or invalid settings file at: "{}"'.format(source)
@@ -34,6 +35,11 @@ def load(source: typing.Union[str, dict]) -> dict:
     fetch_put(out, 'delay', dict())
     fetch_put(out['delay'], 'seating', 0)
     fetch_put(out['delay'], 'interchange', 0)
+
+    summary = out.get('summary')
+    if summary and isinstance(summary, (list, tuple)):
+        summary = ' '.join(summary)
+        out['summary'] = summary
 
     return out
 

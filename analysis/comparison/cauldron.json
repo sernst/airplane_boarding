@@ -1,0 +1,12 @@
+{
+  "python_paths": [
+    "../../"
+  ],
+  "results_path": "../results",
+  "steps_folder": "steps",
+  "steps": [
+    "load_data.py",
+    "seating_delays.py",
+    "interchange_delays.py"
+  ]
+}
