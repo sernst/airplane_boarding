@@ -2,7 +2,9 @@
 Airplane Boarding Simulator
 ===========================
 
-To use run the command
+A python package for simulating the passenger boarding process of an airplane.
+
+To run a simulation, use the command:
 
     ./bin/boarding run [SETTINGS_FILE_PATH] [RESULTS_DIRECTORY_PATH]
 
