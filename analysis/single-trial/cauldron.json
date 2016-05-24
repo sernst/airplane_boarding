@@ -2,6 +2,7 @@
   "python_paths": [
     "../../"
   ],
+  "web_includes": ["includes"],
   "results_path": "../results",
   "steps_folder": "steps",
   "steps":[
