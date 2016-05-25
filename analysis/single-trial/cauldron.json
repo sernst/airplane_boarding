@@ -10,7 +10,15 @@
     "load_data.py",
     "introduction.md",
     "show_source_data.py",
-    "airplane.html",
+    {
+      "name": "airplane",
+      "title": "Boarding Simulation Animation",
+      "file": "airplane/airplane.html",
+      "web_includes": [
+        "airplane/airplane.css",
+        "airplane/airplane.js"
+      ]
+    },
     "plot_seating.py",
     "plot_waiting.py",
     "aisle_capacity.py"
