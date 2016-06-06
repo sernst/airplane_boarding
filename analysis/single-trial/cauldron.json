@@ -2,25 +2,66 @@
   "python_paths": [
     "../../"
   ],
-  "web_includes": ["includes"],
   "results_path": "../results",
-  "steps_folder": "steps",
-  "steps":[
-    "preload.py",
-    "load_data.py",
-    "introduction.md",
-    "show_source_data.py",
+  "steps": [
     {
+      "file": "preload.py",
+      "folder": "steps",
+      "name": "preload.py"
+    },
+    {
+      "file": "load_data.py",
+      "folder": "steps",
+      "name": "load_data.py"
+    },
+    {
+      "file": "introduction.md",
+      "folder": "steps",
+      "name": "introduction.md"
+    },
+    {
+      "file": "show_source_data.py",
+      "folder": "steps",
+      "name": "show_source_data.py"
+    },
+    {
+      "file": "airplane/airplane.html",
+      "folder": "steps",
       "name": "airplane",
       "title": "Boarding Simulation Animation",
-      "file": "airplane/airplane.html",
       "web_includes": [
         "airplane/airplane.css",
         "airplane/airplane.js"
       ]
     },
-    "plot_seating.py",
-    "plot_waiting.py",
-    "aisle_capacity.py"
+    {
+      "file": "plot_seating.py",
+      "folder": "steps",
+      "name": "plot_seating.py"
+    },
+    {
+      "file": "plot_waiting.py",
+      "folder": "steps",
+      "name": "plot_waiting.py"
+    },
+    {
+      "file": "aisle_capacity.py",
+      "folder": "steps",
+      "name": "aisle_capacity.py"
+    },
+    {
+      "file": "densities.py",
+      "folder": "steps",
+      "name": "densities.py"
+    },
+    {
+      "file": "column_progress.py",
+      "folder": "steps",
+      "name": "column_progress.py"
+    }
+  ],
+  "steps_folder": "steps",
+  "web_includes": [
+    "includes"
   ]
 }

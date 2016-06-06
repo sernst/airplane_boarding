@@ -13,10 +13,13 @@ import cauldron as cd
 # DATA_SLUG = ('two', 'two-r-1g-@1')
 
 # === 5. DELAY + SWAPPING 2 RANDOM === #
-DATA_SLUG = ('is_two', 'is_two-r-1g-@1')
+# DATA_SLUG = ('is_two', 'is_two-r-1g-@1')
 
 # === 6. SWAPPING 2 RANDOM === #
 # DATA_SLUG = ('i_two', 'i_two-r-1g-@1')
+
+DATA_SLUG = ('i_ten', 'i_ten-r-1g-@11')
+# DATA_SLUG = ('i_ten', 'i_ten-r-1g-@15')
 
 cd.shared.slug = DATA_SLUG
 cd.project.title = 'Trial: {}/{}'.format(*DATA_SLUG)

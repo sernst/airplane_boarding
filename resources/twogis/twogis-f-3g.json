@@ -1,0 +1,36 @@
+{
+  "title": "Front to Back Groups",
+  "summary": [
+    "This is a trial for a Boeing 737-800 (73H).",
+    "Passengers are loaded from the front of the plane to the back in",
+    "groups of rows with delays."
+  ],
+  "airplane": [
+    {
+      "class": "First",
+      "rows": 4,
+      "seats": [
+        2,
+        2
+      ]
+    },
+    {
+      "class": "Second",
+      "rows": 23,
+      "seats": [
+        3,
+        3
+      ]
+    }
+  ],
+  "populate": {
+    "type": "FORWARD",
+    "groups": 3,
+    "shuffle": true
+  },
+  "delay": {
+    "seating": 2,
+    "interchange": 2
+  }
+}
+

@@ -15,7 +15,7 @@ from boarding import simulate
 # ]
 
 methods = ['r']  # ['b', 'f', 'r']
-groups = [1]  # 2,3,4,5,6,8,10]
+groups = [1, 2, 3, 4]  # 2,3,4,5,6,8,10]
 collections = ['is_two']
 # collections = [
 #     'one', 'two', 'five', 'ten',
@@ -24,7 +24,7 @@ collections = ['is_two']
 
 trial_slug = '{collection}/{collection}-{method}-{group}g'
 start_index = 1
-end_index = 2
+end_index = 10
 
 for c in collections:
     for g in groups:

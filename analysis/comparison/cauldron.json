@@ -3,10 +3,27 @@
     "../../"
   ],
   "results_path": "../results",
-  "steps_folder": "steps",
   "steps": [
-    "load_data.py",
-    "seating_delays.py",
-    "interchange_delays.py"
-  ]
+    {
+      "file": "load_data.py",
+      "folder": "steps",
+      "name": "load_data.py"
+    },
+    {
+      "file": "seating_delays.py",
+      "folder": "steps",
+      "name": "seating_delays.py"
+    },
+    {
+      "file": "interchange_delays.py",
+      "folder": "steps",
+      "name": "interchange_delays.py"
+    },
+    {
+      "file": "combined_delays.py",
+      "folder": "steps",
+      "name": "combined_delays.py"
+    }
+  ],
+  "steps_folder": "steps"
 }

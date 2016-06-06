@@ -21,7 +21,8 @@ groups = {
     'i_two': [0, 2],
     'i_five': [0, 5],
     'i_ten': [0, 10],
-    'twogs': [2, 0]
+    'twogs': [2, 0],
+    'twogis': [2, 2]
 }
 
 data_path = os.path.abspath(
