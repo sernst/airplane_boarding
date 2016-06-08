@@ -15,8 +15,8 @@ from boarding import simulate
 # ]
 
 methods = ['r']  # ['b', 'f', 'r']
-groups = [1, 2, 3, 4]  # 2,3,4,5,6,8,10]
-collections = ['is_two']
+groups = [8, 10]  # , 2, 3, 4, 5, 6, 8, 10]  # 2,3,4,5,6,8,10]
+collections = ['twogis']
 # collections = [
 #     'one', 'two', 'five', 'ten',
 #     'i-one', 'i-two', 'i-five', 'i-ten'
@@ -24,7 +24,7 @@ collections = ['is_two']
 
 trial_slug = '{collection}/{collection}-{method}-{group}g'
 start_index = 1
-end_index = 10
+end_index = 11
 
 for c in collections:
     for g in groups:

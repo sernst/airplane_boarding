@@ -24,7 +24,7 @@
   ],
   "populate": {
     "type": "RANDOM",
-    "groups": 3,
+    "groups": 1,
     "shuffle": true
   },
   "delay": {

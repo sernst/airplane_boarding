@@ -23,8 +23,8 @@ cd.display.table(
     scale=0.4
 )
 
-cd.display.header('Progress', level=2)
-cd.display.table(
-    cd.shared.progress,
-    scale=0.4
-)
+# cd.display.header('Progress', level=2)
+# cd.display.table(
+#     cd.shared.progress,
+#     scale=0.4
+# )

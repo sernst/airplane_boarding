@@ -6,23 +6,30 @@ import plotly.graph_objs as go
 df = project.shared.data
 
 
-def plot_collection(data_frame, title):
+def plot_collection(
+        data_frame,
+        title,
+        color_column='boarding_method',
+        color_values=None
+):
     data_frame = data_frame.sort_values(by='trial_label')
 
     times = data_frame['elapsed']
     labels = data_frame['trial_label']
     colors = []
 
-    for index, row in data_frame.iterrows():
-        method = row['boarding_method']
+    if color_values is None:
+        color_values = dict(
+            r='rgba(204, 204, 204, 0.8)',
+            b=plotting.get_color(0, 0.8),
+            default=plotting.get_color(1, 0.8)
+        )
 
-        if method == 'r':
-            c = 'rgba(204, 204, 204, 0.8)'
-        elif method == 'b':
-            c = plotting.get_color(0, 0.8)
-        else:
-            c = plotting.get_color(1, 0.8)
-        colors.append(c)
+    for index, row in data_frame.iterrows():
+        method = row[color_column]
+        colors.append(
+            color_values.get(method, color_values.get('default'))
+        )
 
     project.display.plotly(
         data=go.Bar(
